@@ -1,0 +1,37 @@
+@startuml MVC
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+class Employee {
+    - name: String
+    - id: int
+    - title: String
+    - salary: int
+    - observer: View
+    --
+    + getName(): String
+    + setName(newName: String): void
+    + getId(): String
+    + setId(newId: int): void
+    + getTitle(): String
+    + setTitle(newTitle: String): void
+    + getSalary(): int
+    + setSalary(newSalary: int): void
+    ..
+    + registerObserver(observer: View): void
+    - notifyObserver(): void
+}
+
+    class View {
+        + onModelUpdate(model: Employee): void
+    }
+
+class Controller {
+
+}
+note top: The assignment does not mention any actions from the view the controller should handle
+
+
+Controller o-- Employee
+Controller o-- View
+Employee -right-> View
+@enduml
