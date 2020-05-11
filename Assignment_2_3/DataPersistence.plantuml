@@ -1,28 +1,22 @@
 @startuml
 interface DataPersistence<Type> {
-    + save(ArrayList<Type>): void
+    + save(data: ArrayList<Type>): boolean
     + load(): ArrayList<Type>    
 }
 class FilePersistence<Type> {
     - filename: String
-    + save(ArrayList<Type>): void
+    + save(data: ArrayList<Type>): boolean
     + load(): ArrayList<Type>    
 }
 DataPersistence <|.. FilePersistence
 class ItemList {
-
+    + saveItems(): boolean
+    + loadItems(): void
 }
 ItemList -left-> FilePersistence: <<bind>> Type: Item
 class ContactList {
-
+    + saveContacts(): boolean
+    + loadContacts(): void
 }
 ContactList -left-> FilePersistence: <<bind>> Type: Contact
-together {
-    class ItemList
-    class ContactList
-}
-' together {
-'     interface DataPersistence<Type>
-'     class FilePersistence<Type>
-' }
 @enduml

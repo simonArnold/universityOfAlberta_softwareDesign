@@ -1,0 +1,13 @@
+@startuml
+class Item {
+    - image: ItemImage
+    + setImage(image: ItemImage): void
+    + getImage(): ItemImage
+}
+Item "1" *-- "1" ItemImage
+class ItemImage {
+    - image_base64: String;
+    + setImage(image: Bitmap): void
+    + getImage(): Bitmap
+}
+@enduml
